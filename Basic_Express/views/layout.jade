@@ -1,0 +1,26 @@
+doctype html
+html
+  head
+    title=title
+    link(rel='stylesheet', href='/stylesheets/dist/semantic.min.css')
+  body
+    div.ui.inverted.menu
+      div.item(class=(title==="Home"?"active":' '))
+        a(href="/")
+          i.ui.large.home.icon
+      div.item(class=(title==="About"?"active":' '))
+        a(href='/about')
+          i.ui.large.lightning.icon
+      div.item(class=(title==='Contact'?'active':''))
+        a(href='/contact')
+          i.ui.large.text.telephone.icon
+      div.right.menu
+        div.item
+          button.ui.inverted.animated.fade.basic.button
+            div.visible.content Login
+            div.hidden.content
+              i.ui.id.badge.icon
+    block content
+    script(src="/javascripts/jquery-1.9.1.js")
+
+    script(src="/javascripts/semantic.min.js")

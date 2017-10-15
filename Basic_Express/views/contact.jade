@@ -1,0 +1,24 @@
+extends layout
+block content
+  .ui.text.container
+    form.ui.form(method="post",action="contact/send")
+      .field
+        label Name
+        .two.fields
+          .ui.field
+            input(type="text",placeholder="First Name",required)
+          .ui.field
+            input(type="text",placeholder="Last Name",required)
+      .field
+        label Email
+        input(type="email",placeholder="Email",required)
+      .two.fields
+        .field
+          label Password
+          input(type="password",required)
+        .field
+          label Retype Password
+          input(type="password",required)
+      .ui.center.aligned.container
+        button.ui.blue.basic.submit.button(style="margin:0 10px 0 0;") Submit
+        button.ui.secondary.basic.submit.button(type="reset") Reset
