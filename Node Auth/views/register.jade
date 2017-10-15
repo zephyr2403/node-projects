@@ -1,0 +1,25 @@
+extends  layout
+
+block content
+  .ui.text.container(style="padding-top:10%;")
+    .ui.inverted.segment
+      h1 Register , It's Free
+      form.ui.form
+        .ui.field
+          label(style="color:#fff;") Name
+          .ui.two.fields
+            .ui.field
+              input(type='text',name='fname')
+            .ui.field
+              input(type='text',name='lname')
+          .ui.field
+            label(style="color:#fff;") Email
+            input(type="email",name="email")
+          .two.fields
+            .field
+             label(style="color:#fff;") Password
+             input(type="password",name="pass")
+            .field
+             label(style="color:#fff;") Retype Password
+             input(type="password",name="repass")
+        .ui.inverted.submit.button Register
