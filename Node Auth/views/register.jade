@@ -4,7 +4,13 @@ block content
   .ui.text.container(style="padding-top:10%;")
     .ui.inverted.segment
       h1 Register , It's Free
-      form.ui.form
+      if errors
+        div.ui.black.message
+          i.close.icon
+          div.header(style="padding-bottom:5px;") Following Errors Occured During Form Submission
+          each error, i in errors
+              p #{error.msg}
+      form.ui.form(method='POST',action="/register",enctype='multipart/form-data')
         .ui.field
           label(style="color:#fff;") Name
           .ui.two.fields
@@ -22,4 +28,7 @@ block content
             .field
              label(style="color:#fff;") Retype Password
              input(type="password",name="repass")
-        .ui.inverted.submit.button Register
+          .field
+            label(style="color:#fff;") Profile Image
+            input(type='file',name='profileimage')
+          button.ui.inverted.submit.button Register
