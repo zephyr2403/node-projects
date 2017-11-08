@@ -1,4 +1,5 @@
 var express = require('express')
+var User = require('../models/user.js')
 var router = express.Router()
 
 router.get('/',function(req,res,next){
@@ -28,7 +29,7 @@ router.post('/',function(req,res,next){
   }
   else {
       //If no image is selected a default image will be shown
-      var image  = 'noimage.png';
+      var imagename  = 'noimage.png';
     }
 
     //Form Validation.
@@ -36,9 +37,9 @@ router.post('/',function(req,res,next){
     req.checkBody('fname','First Name is Required Field').notEmpty();
     req.checkBody('lname','Last Name is Required Field').notEmpty();
     req.checkBody('email','Email Required Field').notEmpty();
-    req.checkBody('email','Invalid Field').isEmail();
+    req.checkBody('email','Invalid Email').isEmail();
     req.checkBody('pass','Password Is Required Field').notEmpty();
-    req.checkBody('repass','Two Password Field Donot Match').equals(req.body.pass);
+    req.checkBody('repass',"Password Don't Match").equals(req.body.pass);
 
     //Check For Errors
 
@@ -62,16 +63,17 @@ router.post('/',function(req,res,next){
           profileimage: imagename
         });
         //Create User
-        //User.createUser(newUser,function(err,user){
-          //if(err) throw err;
-          //console.log(user);
-        //});
+        User.createUser(newUser,function(err,user){
+          if(err) throw err;
+          console.log(user);
+        });
 
         //Success Messsage
         req.flash('success','You Are Now Registered And May Log In');
 
         res.location('/');
         res.redirect('/');
+
 
       }
 });
