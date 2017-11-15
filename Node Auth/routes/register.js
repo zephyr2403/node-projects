@@ -8,7 +8,7 @@ router.get('/',function(req,res,next){
 
 router.post('/',function(req,res,next){
   //getting form value
-  console.log('hey');
+  console.log('Register');
   var fname = req.body.fname;
   var lname =req.body.lname;
   var email =req.body.email
@@ -77,4 +77,5 @@ router.post('/',function(req,res,next){
 
       }
 });
+
 module.exports = router;

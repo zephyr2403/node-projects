@@ -4,11 +4,11 @@ block content
   .ui.text.container(style="padding-top:15%;")
     .ui.inverted.segment
       h1 Login To Your Account
-      form.ui.form
+      form.ui.form(method='POST',action="/login")
         .ui.field
           label(style="color:#fff;") Email
           input(type="email",name="email")
         .ui.field
           label(style="color:#fff;") Password
           input(type="password",name="pass")
-        .ui.inverted.submit.button Login
+        button.ui.inverted.submit.button Login
