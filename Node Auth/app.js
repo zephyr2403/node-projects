@@ -17,7 +17,7 @@ var db =mongoose.connection;
 var index = require('./routes/index');
 var register = require('./routes/register');
 var login = require('./routes/login')
-
+var logout = require('./routes/logout');
 var app = express();
 
 // view engine setup
@@ -69,10 +69,15 @@ app.use(function(req,res,next){
   res.locals.messages =require('express-messages')(req,res);
   next();
 });
+app.get('*',function(req,res,next){
+  res.locals.user = req.user || null;
+  next();
+});
+
 app.use('/', index);
 app.use('/register', register);
 app.use('/login',login);
-
+app.use('/logout',logout);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

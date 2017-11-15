@@ -43,9 +43,11 @@ passport.use(new LocalStrategy({
     })//getUserByEmail
   }//function
 ));//local Strategy
-router.post('/',passport.authenticate('local',{failureRedirect:'/register',failureFlash:"Invalid Username And Password"}),function(req,res){
+router.post('/',passport.authenticate('local',{failureRedirect:'/',failureFlash:"Invalid Username And Password"}),function(req,res){
   console.log("authentication Succesful");
   req.flash('success','You Are Logged In');
   res.redirect('/');
 })
+
+
 module.exports  = router
